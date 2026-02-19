@@ -1,0 +1,143 @@
+/* ============================================================
+   about.css  —  styles for AboutComponent.jsx
+   ============================================================ */
+
+/* ── Section ──────────────────────────────────────────────── */
+.about {
+  padding: 6rem 0;
+  background-color: rgb(var(--surface));
+  transition: background-color 0.3s ease;
+}
+
+.about-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Section heading block ────────────────────────────────── */
+.section-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  margin-bottom: 0.5rem;
+}
+
+.section-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: rgb(var(--body));
+  margin-bottom: 3rem;
+}
+
+/* ── Two-column grid ──────────────────────────────────────── */
+.about-grid {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Left: profile image ──────────────────────────────────── */
+.about-image-col {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+}
+
+.about-image-col.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* The portrait photo */
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ── Right: text content ──────────────────────────────────── */
+.about-content-col {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+}
+
+.about-content-col.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.about-bio {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgb(var(--muted));
+  margin-bottom: 2rem;
+}
+
+/* ── Education block ──────────────────────────────────────── */
+.about-education {
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--line));
+  margin-bottom: 2rem;
+}
+
+.about-education-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.about-education-text {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgb(var(--muted));
+}
+
+/* ── Contact info rows ────────────────────────────────────── */
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgb(var(--page));
+  border: 1px solid rgb(var(--line));
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.contact-row:hover {
+  border-color: rgb(var(--body));
+}
+
+.contact-icon {
+  color: rgb(var(--muted));
+  flex-shrink: 0;
+}
+
+.contact-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  margin-bottom: 0.2rem;
+}
+
+.contact-value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(var(--body));
+}

@@ -1,0 +1,190 @@
+/* ============================================================
+   skills.css  —  styles for SkillsComponent.jsx
+   ============================================================ */
+
+.skills {
+  padding: 6rem 0;
+  background-color: rgb(var(--page));
+  transition: background-color 0.3s ease;
+}
+
+.skills-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Two columns: professional | technical ────────────────── */
+.skills-grid {
+  display: grid;
+  gap: 4rem;
+}
+
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Sub-section label above each group ───────────────────── */
+.skills-group-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(var(--line));
+  margin-bottom: 2rem;
+}
+
+/* ── Individual skill row ─────────────────────────────────── */
+.skill-row {
+  margin-bottom: 1.75rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.skill-row.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+
+/* CHANGE 1: skill name is now bold and slightly larger */
+.skill-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+  letter-spacing: 0.01em;
+}
+
+/* CHANGE 1: percentage is also bold to match */
+.skill-percent {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+}
+
+/* ── Animated bar — thicker and bolder ───────────────────── */
+/* CHANGE 1: bar is now 3px tall instead of 1px to feel bold */
+.skill-bar-track {
+  height: 3px;
+  width: 100%;
+  background-color: rgb(var(--line));
+  border-radius: 2px;
+}
+
+.skill-bar-fill {
+  height: 3px;
+  background-color: rgb(var(--body));
+  width: 0;
+  border-radius: 2px;
+  transition: width 1s ease;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   ADDITIONAL SKILLS
+   CHANGE 2: boxes are interactive — hover fills them solid,
+   text flips color, cursor pointer, slight lift on hover
+   ══════════════════════════════════════════════════════════ */
+.additional-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 3rem;
+}
+
+.additional-pill {
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(var(--line));
+
+  /* CHANGE 2a: bigger, more readable text */
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: rgb(var(--body));
+
+  background-color: rgb(var(--surface));
+  cursor: pointer;
+
+  /* smooth fill transition */
+  transition:
+    background-color 0.22s ease,
+    color            0.22s ease,
+    border-color     0.22s ease,
+    transform        0.18s ease,
+    box-shadow       0.18s ease;
+}
+
+/* CHANGE 2b: hover — fills dark, text flips to page color, lifts slightly */
+.additional-pill:hover {
+  background-color: rgb(var(--body));
+  color:            rgb(var(--page));
+  border-color:     rgb(var(--body));
+  transform:        translateY(-2px);
+  box-shadow:       0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   TECHNICAL SKILL TAGS
+   CHANGE 3: tags are interactive — same fill-on-hover
+   treatment, bigger text for visibility
+   ══════════════════════════════════════════════════════════ */
+.tech-category {
+  margin-bottom: 2rem;
+}
+
+.tech-category-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+  letter-spacing: 0.04em;
+  margin-bottom: 0.85rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tech-tag {
+  padding: 0.45rem 1rem;
+
+  /* CHANGE 3a: bigger, more readable text */
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: rgb(var(--body));
+
+  background-color: rgb(var(--surface));
+  border: 1px solid rgb(var(--line));
+  cursor: pointer;
+
+  /* smooth fill transition */
+  transition:
+    background-color 0.22s ease,
+    color            0.22s ease,
+    border-color     0.22s ease,
+    transform        0.18s ease,
+    box-shadow       0.18s ease;
+}
+
+/* CHANGE 3b: hover — fills dark, text flips, lifts */
+.tech-tag:hover {
+  background-color: rgb(var(--body));
+  color:            rgb(var(--page));
+  border-color:     rgb(var(--body));
+  transform:        translateY(-2px);
+  box-shadow:       0 4px 12px rgba(0, 0, 0, 0.1);
+}

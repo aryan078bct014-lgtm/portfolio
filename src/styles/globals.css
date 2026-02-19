@@ -1,0 +1,63 @@
+/* ============================================================
+   globals.css  —  imported once in main.jsx
+   This file does THREE things only:
+     1. Load Tailwind layers
+     2. Define CSS color variables (light + dark values)
+     3. Set bare-minimum global defaults on html/body
+   Nothing else goes here. Each component has its own CSS file.
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ── LIGHT MODE  (default) ────────────────────────────────── */
+:root {
+  --page:         248 250 252;   /* #F8FAFC  page background   */
+  --surface:      255 255 255;   /* #FFFFFF  cards / panels    */
+  --body:         15  23  42;    /* #0F172A  primary text      */
+  --muted:        100 116 139;   /* #64748B  labels / captions */
+  --line:         226 232 240;   /* #E2E8F0  borders           */
+  --accent:       37  99  235;   /* #2563EB  blue highlight    */
+  --accent-hover: 29  78  216;   /* #1D4ED8                    */
+}
+
+/* ── DARK MODE  (toggled by ThemeContext adding .dark to <html>) */
+.dark {
+  --page:    15  23  42;         /* #0F172A */
+  --surface: 30  41  59;         /* #1E293B */
+  --body:    248 250 252;        /* #F8FAFC */
+  --muted:   100 116 139;        /* #64748B */
+  --line:    51  65  85;         /* #334155 */
+  /* accent stays the same in dark mode */
+}
+
+
+/* ── GLOBAL DEFAULTS ──────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;   /* prevents horizontal scroll on the document */
+  max-width: 100%;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: rgb(var(--page));
+  color: rgb(var(--body));
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;   /* belt-and-suspenders: clips any child that bleeds past the viewport */
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
