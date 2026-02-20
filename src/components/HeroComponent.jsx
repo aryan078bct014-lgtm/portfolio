@@ -3,20 +3,29 @@ import '../styles/hero.css';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { profileModel } from '../models/portfolioModel';
 
+const DownloadIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+  </svg>
+);
+
 const HeroComponent = () => {
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const { ref, isVisible } = useScrollReveal(0.05);
   const profile = useMemo(() => profileModel, []);
 
   const goTo = useCallback((id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
+  const v = isVisible ? 'visible' : '';
+
   return (
     <section id="home" ref={ref} className="hero">
       <div className="hero-inner">
 
-        {/* ── Left: name + subtitle + buttons ── */}
-        <div className={`hero-text ${isVisible ? 'visible' : ''}`}>
+        <div className={`hero-left ${v}`}>
+
           <p className="hero-eyebrow">Portfolio</p>
 
           <h1 className="hero-name">ARYAN</h1>
@@ -39,13 +48,7 @@ const HeroComponent = () => {
           </div>
         </div>
 
-        {/* ── Right: monogram logo ── */}
-        <div className={`hero-image-col ${isVisible ? 'visible' : ''}`}>
-          {/*
-            Image file: /public/images/logo.png
-            This is the RN | AK monogram logo you provided.
-            Drop logo.png into /public/images/ and it renders here.
-          */}
+        <div className={`hero-right ${v}`}>
           <img
             src={profile.logoImage}
             alt="Aryan Kafle monogram logo"

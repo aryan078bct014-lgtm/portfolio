@@ -47,7 +47,6 @@ const ProjectCardComponent = ({ project, index }) => (
 
         <span className="project-github-btn">
           <IconGithub />
-          GitHub
         </span>
       </div>
     </div>
