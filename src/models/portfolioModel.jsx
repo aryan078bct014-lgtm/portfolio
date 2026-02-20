@@ -32,8 +32,8 @@ export const skillsModel = {
   professional: [
     { name: 'Programming',               level: 95 },
     { name: 'Communication & Teamwork',  level: 93 },
-    { name: 'Multiple Projects',         level: 90 },
-    { name: 'Analytical & Problem Solving', level: 75 },
+    { name: 'Multiple Projects',         level: 85 },
+    { name: 'Analytical & Problem Solving', level: 90 },
   ],
   additional: [
     'Schedule Maintenance',
