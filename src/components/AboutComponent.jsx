@@ -94,7 +94,7 @@ const AboutComponent = () => {
                 className="about-download-btn"
               >
                 <DownloadIcon />
-                Download CV
+                Get CV
               </a>
               <a
                 href={profile.resume}
@@ -102,7 +102,7 @@ const AboutComponent = () => {
                 className="about-download-btn about-download-btn-outline"
               >
                 <DownloadIcon />
-                Resume
+                Get Resume
               </a>
             </div>
 
