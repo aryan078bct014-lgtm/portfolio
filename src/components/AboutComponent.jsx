@@ -102,7 +102,7 @@ const AboutComponent = () => {
                 className="about-download-btn about-download-btn-outline"
               >
                 <DownloadIcon />
-                Download Resume
+                Resume
               </a>
             </div>
 
