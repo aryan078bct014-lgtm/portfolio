@@ -22,14 +22,18 @@ with a strong foundation in mathematics and applied computing.`,
 
   // About section: portrait photo
   profileImage: '/images/profile.jpg',
+
+  cv:     '/files/aryan_kafle_cv.pdf',
+  resume: '/files/aryan_kafle_resume.pdf',
+  
 };
 
 export const skillsModel = {
   professional: [
     { name: 'Programming',               level: 95 },
     { name: 'Communication & Teamwork',  level: 93 },
-    { name: 'Multiple Projects',         level: 85 },
-    { name: 'Analytical & Problem Solving', level: 90 },
+    { name: 'Multiple Projects',         level: 90 },
+    { name: 'Analytical & Problem Solving', level: 75 },
   ],
   additional: [
     'Schedule Maintenance',
@@ -53,6 +57,7 @@ export const projectsModel = [
     description: 'Built and maintained multiple personal and client websites from scratch using modern web technologies.',
     tags:        ['HTML', 'CSS', 'JavaScript'],
     image:       '/images/project-web.png',
+    github:      'https://github.com/aryankaflegithub/PORTFOLIO-MANAGEMENT-SYSTEM',
   },
   {
     id:          2,
@@ -60,6 +65,7 @@ export const projectsModel = [
     description: 'Developed a fully playable game using Python and the Pygame library, covering game loops, physics, and UI.',
     tags:        ['Python', 'Pygame'],
     image:       '/images/project-game.png',
+    github:      'https://github.com/aryankaflegithub/game',
   },
   {
     id:          3,
@@ -67,6 +73,7 @@ export const projectsModel = [
     description: 'Conducted research on generative AI models focused on text-to-image synthesis and model evaluation.',
     tags:        ['Generative AI', 'Research', 'Python'],
     image:       '/images/project-ai.png',
+    github:      'https://github.com/aryankaflegithub/minor_project',
   },
   {
     id:          4,
@@ -74,6 +81,7 @@ export const projectsModel = [
     description: 'Currently developing ML algorithms for reinforcement learning with satellite-related state space modeling applications.',
     tags:        ['ML', 'RL', 'State Space'],
     image:       '/images/project-rl.png',
+    github:      'https://github.com/aryankaflegithub/Satellite_attitude_control',
   },
 ];
 

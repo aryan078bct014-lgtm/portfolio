@@ -3,6 +3,13 @@ import '../styles/about.css';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { profileModel } from '../models/portfolioModel';
 
+const DownloadIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+  </svg>
+);
+
 const IconLocation = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
@@ -40,7 +47,7 @@ const AboutComponent = () => {
         <div className="about-grid">
 
           <div className={`about-image-col ${isVisible ? 'visible' : ''}`}>
-            
+
             <img
               src={profile.profileImage}
               alt="Aryan Kafle"
@@ -78,6 +85,25 @@ const AboutComponent = () => {
                 <p className="contact-label">Email</p>
                 <a href={`mailto:${profile.email}`} className="contact-value">{profile.email}</a>
               </div>
+            </div>
+
+            <div className="about-downloads">
+              <a
+                href={profile.cv}
+                download="Aryan_Kafle_CV.pdf"
+                className="about-download-btn"
+              >
+                <DownloadIcon />
+                Download CV
+              </a>
+              <a
+                href={profile.resume}
+                download="Aryan_Kafle_Resume.pdf"
+                className="about-download-btn about-download-btn-outline"
+              >
+                <DownloadIcon />
+                Download Resume
+              </a>
             </div>
 
           </div>

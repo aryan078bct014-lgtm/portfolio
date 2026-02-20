@@ -40,16 +40,22 @@
   transform: translateY(0);
 }
 
-/* ── Card itself ──────────────────────────────────────────── */
+/* ── Card — the whole card is an <a> tag ──────────────────── */
 .project-card {
+  display: block;
   border: 1px solid rgb(var(--line));
   background-color: rgb(var(--page));
-  transition: border-color 0.3s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .project-card:hover {
   border-color: rgb(var(--body));
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Top image area  ──────────────────────────────────────── */
@@ -72,7 +78,34 @@
 }
 
 .project-card:hover .project-image {
-  transform: scale(1.04);
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--body), 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay-text {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(var(--page));
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 /* ── Card text area ───────────────────────────────────────── */
@@ -107,14 +140,21 @@
   font-size: 0.875rem;
   line-height: 1.7;
   color: rgb(var(--muted));
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
-/* ── Tag list ─────────────────────────────────────────────── */
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
 .project-tag {
@@ -124,4 +164,27 @@
   color: rgb(var(--muted));
   border: 1px solid rgb(var(--line));
   background-color: rgb(var(--surface));
+}
+
+/* ── GitHub pill button (bottom-right of card body) ──────── */
+.project-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--body));
+  border: 1px solid rgb(var(--body));
+  background-color: transparent;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Button fills on card hover */
+.project-card:hover .project-github-btn {
+  background-color: rgb(var(--body));
+  color: rgb(var(--page));
 }
