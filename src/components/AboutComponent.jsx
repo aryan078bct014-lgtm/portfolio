@@ -14,7 +14,7 @@ const AboutComponent = () => {
       <div className="about-inner">
 
         {/* Heading */}
-        <p className="section-eyebrow">01 — About</p>
+        <p className="section-eyebrow">01 - About</p>
         <h2 className="section-heading">About Me</h2>
 
         <div className="about-grid">

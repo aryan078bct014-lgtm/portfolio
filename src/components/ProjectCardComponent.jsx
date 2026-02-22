@@ -1,14 +1,12 @@
 import '../styles/projects.css';
-import { IconGithub } from './IconsComponent';
+import { Link } from 'react-router-dom';
+import { ArrowIcon } from './IconsComponent';
 
 const ProjectCardComponent = ({ project, index }) => (
-
-  <a
-    href={project.github}
-    target="_blank"
-    rel="noopener noreferrer"
+  <Link
+    to={`/project/${project.slug}`}
     className="project-card"
-    aria-label={`View ${project.title} on GitHub`}
+    aria-label={`View ${project.title} details`}
   >
     <div className="project-image-box">
       <img
@@ -18,8 +16,8 @@ const ProjectCardComponent = ({ project, index }) => (
       />
       <div className="project-overlay">
         <span className="project-overlay-text">
-          <IconGithub />
-          View on GitHub
+          <ArrowIcon />
+          View Project
         </span>
       </div>
     </div>
@@ -31,7 +29,7 @@ const ProjectCardComponent = ({ project, index }) => (
         <span className="project-index">{String(index + 1).padStart(2, '0')}</span>
       </div>
 
-      <p className="project-description">{project.description}</p>
+      <p className="project-description">{project.subtitle}</p>
 
       <div className="project-footer">
         <div className="project-tags">
@@ -39,13 +37,12 @@ const ProjectCardComponent = ({ project, index }) => (
             <span key={tag} className="project-tag">{tag}</span>
           ))}
         </div>
-
         <span className="project-github-btn">
-          <IconGithub />
+          View Details <ArrowIcon />
         </span>
       </div>
     </div>
-  </a>
+  </Link>
 );
 
 export default ProjectCardComponent;

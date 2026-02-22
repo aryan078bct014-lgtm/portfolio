@@ -12,7 +12,7 @@ const ProjectsComponent = () => {
     <section id="projects" ref={ref} className="projects">
       <div className="projects-inner">
 
-        <p className="section-eyebrow">03 — Work</p>
+        <p className="section-eyebrow">03 - Work</p>
         <h2 className="section-heading">Projects</h2>
 
         <div className="projects-grid">

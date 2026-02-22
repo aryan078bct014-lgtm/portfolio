@@ -2,7 +2,7 @@ import { useMemo, useCallback } from 'react';
 import '../styles/contact.css';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { profileModel } from '../models/portfolioModel';
-import { IconEmail, IconPhone, IconLocation as IconPin } from './IconsComponent';
+import { IconEmail, IconPhone, IconLocation } from './IconsComponent';
 
 
 const GMAIL_URL = 'https://mail.google.com';
@@ -17,16 +17,16 @@ const ContactComponent = () => {
   }, []);
 
   const items = useMemo(() => [
-    { label: 'Email',    value: profile.email,    href: GMAIL_URL,              newTab: true,  icon: <IconEmail /> },
-    { label: 'Phone',    value: profile.phone,    href: `tel:${profile.phone}`, newTab: false, icon: <IconPhone /> },
-    { label: 'Location', value: profile.location, href: null,                   newTab: false, icon: <IconPin />   },
+    { label: 'Email', value: profile.email, href: GMAIL_URL, newTab: true,  icon: <IconEmail /> },
+    { label: 'Phone', value: profile.phone, href: `tel:${profile.phone}`, newTab: false, icon: <IconPhone /> },
+    { label: 'Location', value: profile.location, href: null, newTab: false, icon: <IconLocation />   },
   ], [profile]);
 
   return (
     <section id="contact" ref={ref} className="contact">
       <div className="contact-inner">
 
-        <p className="section-eyebrow">05 — Contact</p>
+        <p className="section-eyebrow">05 - Contact</p>
         <h2 className="section-heading">Get In Touch</h2>
         <p className="contact-intro">
           Open to opportunities, collaborations, or a good technical conversation. Feel free to reach out.

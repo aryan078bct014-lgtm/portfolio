@@ -71,7 +71,7 @@ const AIUsageComponent = () => {
       <div className="ai-usage-inner">
 
         {/* ── Heading ── */}
-        <span className="ai-eyebrow">04 — AI Workflow</span>
+        <span className="ai-eyebrow">04 - AI Workflow</span>
         <h2 className="ai-heading">
           I Use AI to Work
           <span className="ai-heading-dim">Smarter, Not Less.</span>

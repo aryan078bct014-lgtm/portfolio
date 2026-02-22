@@ -32,8 +32,8 @@ const FooterComponent = () => {
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-copy">© {year} {profileModel.name}. All rights reserved.</p>
-          <p className="footer-copy">Computer Engineering — Kathmandu, Nepal</p>
+          <p className="footer-copy">{year} {profileModel.name}. All rights reserved.</p>
+          <p className="footer-copy">Computer Engineering - Kathmandu, Nepal</p>
         </div>
 
       </div>
