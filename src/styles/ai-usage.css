@@ -1,0 +1,405 @@
+.ai-usage {
+  padding: 6rem 0;
+  background-color: rgb(var(--surface));
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+.ai-usage-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.ai-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.ai-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  color: rgb(var(--body));
+  line-height: 1.05;
+  margin-bottom: 0.75rem;
+}
+
+/* Second line slightly dimmed, same way hero does outline text */
+.ai-heading-dim {
+  color: rgb(var(--muted));
+  opacity: 0.4;
+  display: block;
+}
+
+.ai-intro {
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgb(var(--muted));
+  max-width: 36rem;
+  margin-bottom: 4rem;
+}
+
+
+.ai-grid {
+  display: grid;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .ai-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+
+.ai-col-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(var(--line));
+  margin-bottom: 1.75rem;
+}
+
+
+.ai-tool-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ai-tool-row.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Icon box — same border/bg pattern as contact-item */
+.ai-tool-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  background-color: rgb(var(--page));
+  border: 1px solid rgb(var(--line));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.ai-tool-row:hover .ai-tool-icon {
+  border-color: rgb(var(--body));
+}
+
+.ai-tool-info {
+  flex: 1;
+}
+
+.ai-tool-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(var(--body));
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.ai-tool-desc {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: rgb(var(--muted));
+}
+
+
+.ai-workflow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Same pattern as .project-card / .contact-item */
+.ai-workflow-card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgb(var(--line));
+  background-color: rgb(var(--page));
+  opacity: 0;
+  transform: translateX(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease,
+              border-color 0.2s ease;
+}
+
+.ai-workflow-card.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.ai-workflow-card:hover {
+  border-color: rgb(var(--body));
+}
+
+.ai-workflow-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--body));
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.02em;
+}
+
+.ai-workflow-text {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: rgb(var(--muted));
+}
+
+
+.ai-philosophy {
+  border-top: 1px solid rgb(var(--line));
+  border-bottom: 1px solid rgb(var(--line));
+  padding: 2.5rem 0;
+  margin-bottom: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Vertical accent bar — uses body colour like skill-panel left border */
+.ai-philosophy-bar {
+  width: 3px;
+  align-self: stretch;
+  min-height: 3rem;
+  background-color: rgb(var(--body));
+  opacity: 0.2;
+  flex-shrink: 0;
+}
+
+/* Same font as .section-heading but italic */
+.ai-philosophy-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: rgb(var(--body));
+  font-style: italic;
+}
+
+
+.ai-download-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgb(var(--line));
+}
+
+@media (min-width: 640px) {
+  .ai-download-section {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.ai-download-label {
+  font-size: 0.875rem;
+  color: rgb(var(--muted));
+  line-height: 1.7;
+  max-width: 32rem;
+}
+
+.ai-download-label strong {
+  color: rgb(var(--body));
+  font-weight: 600;
+}
+
+/* Same style as .btn-solid in hero.css */
+.ai-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 2rem;
+  background-color: rgb(var(--body));
+  color: rgb(var(--page));
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ai-download-btn:hover {
+  opacity: 0.8;
+}
+
+.ai-download-btn svg {
+  flex-shrink: 0;
+}
+
+.leo-teaser {
+  margin-top: 2rem;
+  padding: 1.75rem;
+  border: 1px solid rgb(var(--line));
+  background-color: rgb(var(--page));
+  position: relative;
+
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.2s ease;
+}
+
+.leo-teaser.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leo-teaser:hover {
+  border-color: rgb(var(--body));
+}
+
+/* ── Top row: LOCAL badge + version ─────────────────────── */
+.leo-teaser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.leo-teaser-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgb(var(--page));
+  background-color: rgb(var(--body));
+  padding: 0.2rem 0.6rem;
+}
+
+.leo-teaser-version {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: rgb(var(--muted));
+  letter-spacing: 0.1em;
+}
+
+.leo-teaser-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgb(var(--body));
+  line-height: 1;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.leo-teaser-tagline {
+  font-size: 0.75rem;
+  color: rgb(var(--muted));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.leo-teaser-facts {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgb(var(--line));
+}
+
+.leo-teaser-facts li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  font-size: 0.8125rem;
+}
+
+.leo-fact-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  flex-shrink: 0;
+}
+
+.leo-fact-value {
+  color: rgb(var(--body));
+  line-height: 1.5;
+}
+
+.leo-teaser-footer {
+  border-top: 1px solid rgb(var(--line));
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.leo-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1.1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgb(var(--page));
+  background-color: rgb(var(--body));
+  border: 1px solid rgb(var(--body));
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.leo-download-btn:hover {
+  opacity: 0.8;
+}
+
+.leo-teaser-hint {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: rgb(var(--muted));
+  letter-spacing: 0.02em;
+}
+
+.leo-teaser-name {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.leo-teaser-tagline {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.leo-fact-value {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.leo-teaser-version {
+  font-family: 'DM Mono', monospace;
+}
+
+.leo-fact-label {
+  font-family: 'DM Mono', monospace;
+}
