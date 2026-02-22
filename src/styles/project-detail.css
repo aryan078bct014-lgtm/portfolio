@@ -1,0 +1,338 @@
+/* ============================================================
+   project-detail.css  —  styles for ProjectDetailPage.jsx
+   Uses the same design tokens as the rest of the site.
+   ============================================================ */
+
+/* ── Page wrapper — sits below the fixed navbar ────────────── */
+.pd-page {
+  min-height: 100vh;
+  padding-top: 2rem;           /* no navbar to clear on detail pages */
+  padding-bottom: 6rem;
+  background-color: rgb(var(--page));
+  transition: background-color 0.3s ease;
+}
+
+.pd-inner {
+  max-width: 52rem;            /* narrower than homepage — editorial width */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* ── Back link ──────────────────────────────────────────────── */
+.pd-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgb(var(--muted));
+  margin-bottom: 3rem;
+  transition: color 0.2s ease;
+}
+
+.pd-back:hover {
+  color: rgb(var(--body));
+}
+
+/* ══════════════════════════════════════════════════════════
+   HEADER
+   ══════════════════════════════════════════════════════════ */
+.pd-header {
+  margin-bottom: 2.5rem;
+}
+
+/* Tags + meta row */
+.pd-header-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pd-tag {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: rgb(var(--muted));
+  border: 1px solid rgb(var(--line));
+  background-color: rgb(var(--surface));
+}
+
+/* Meta info row — duration, role, difficulty */
+.pd-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.pd-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pd-meta-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+}
+
+.pd-meta-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgb(var(--body));
+}
+
+/* Difficulty dots */
+.pd-difficulty-dots {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  padding-top: 0.1rem;
+}
+
+.pd-dot {
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid rgb(var(--line));
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pd-dot-filled {
+  background-color: rgb(var(--body));
+  border-color: rgb(var(--body));
+}
+
+/* Title and subtitle */
+.pd-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  color: rgb(var(--body));
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.pd-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgb(var(--muted));
+}
+
+/* ── Hero image ─────────────────────────────────────────────── */
+.pd-hero-image-box {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgb(var(--line));
+  margin-bottom: 4rem;
+  background-color: rgb(var(--surface));
+}
+
+.pd-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CONTENT SECTIONS
+   ══════════════════════════════════════════════════════════ */
+.pd-section {
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgb(var(--line));
+}
+
+.pd-section:last-of-type {
+  border-bottom: none;
+}
+
+/* Section title — same pattern as skills-group-label but larger */
+.pd-section-title {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgb(var(--muted));
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(var(--line));
+}
+
+/* Body text — matches .ai-intro, .contact-intro */
+.pd-body-text {
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: rgb(var(--muted));
+}
+
+/* ── Challenge cards ─────────────────────────────────────────── */
+.pd-challenges {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pd-challenge-card {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(var(--line));
+  background-color: rgb(var(--surface));
+  transition: border-color 0.2s ease;
+}
+
+.pd-challenge-card:hover {
+  border-color: rgb(var(--body));
+}
+
+.pd-challenge-number {
+  font-family: 'DM Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgb(var(--line));
+  line-height: 1;
+  padding-top: 0.2rem;
+}
+
+.pd-challenge-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+/* ── Screenshots ─────────────────────────────────────────────── */
+.pd-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.pd-screenshot-figure {
+  margin: 0;
+}
+
+.pd-screenshot-img {
+  width: 100%;
+  display: block;
+  border: 1px solid rgb(var(--line));
+  object-fit: cover;
+}
+
+.pd-screenshot-caption {
+  font-size: 0.75rem;
+  color: rgb(var(--muted));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.pd-video {
+  width: 100%;
+  display: block;
+  border: 1px solid rgb(var(--line));
+}
+
+/* ── Learnings list ──────────────────────────────────────────── */
+.pd-learnings {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pd-learning-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgb(var(--muted));
+}
+
+.pd-learning-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgb(var(--body));
+  flex-shrink: 0;
+  margin-top: 0.55rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   GITHUB CTA — bottom of page
+   ══════════════════════════════════════════════════════════ */
+.pd-github-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 2.5rem;
+  border: 1px solid rgb(var(--line));
+  background-color: rgb(var(--surface));
+}
+
+@media (min-width: 640px) {
+  .pd-github-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.pd-cta-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(var(--body));
+  margin-bottom: 0.35rem;
+}
+
+.pd-cta-sub {
+  font-size: 0.8125rem;
+  color: rgb(var(--muted));
+  line-height: 1.6;
+}
+
+/* GitHub button — same as .btn-solid */
+.pd-github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.75rem;
+  background-color: rgb(var(--body));
+  color: rgb(var(--page));
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pd-github-btn:hover {
+  opacity: 0.8;
+}
