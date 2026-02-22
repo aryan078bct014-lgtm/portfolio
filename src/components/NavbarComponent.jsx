@@ -1,23 +1,58 @@
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useEffect, useRef } from 'react';
 import '../styles/navbar.css';
 import { useTheme } from '../context/ThemeContext';
 import { navLinksModel } from '../models/portfolioModel';
 import useActiveSection from '../hooks/useActiveSection';
 import { IconSun, IconMoon } from './IconsComponent';
 
-const sectionIds = navLinksModel.map((l) => l.href.replace('#', ''));
+const sectionIds = navLinksModel
+  .map((l) => l.href.replace('#', ''))
+  .filter(Boolean);
 
 const NavbarComponent = () => {
-  const { isDark, toggleTheme } = useTheme();
-  const { active, scrollTo }    = useActiveSection(sectionIds);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { isDark, toggleTheme }  = useTheme();
+  const { active, scrollTo }     = useActiveSection(sectionIds);
+  const [menuOpen,    setMenuOpen]    = useState(false);
+  const [menuClosing, setMenuClosing] = useState(false);
 
-  // Smooth-scroll to section without page reload
+  // Track mounted state so the setTimeout never calls setState after unmount
+  const mountedRef = useRef(true);
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  // Track the timeout so we can clear it on unmount
+  const timerRef = useRef(null);
+  useEffect(() => {
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    setMenuClosing(true);
+    timerRef.current = setTimeout(() => {
+      if (!mountedRef.current) return;
+      setMenuOpen(false);
+      setMenuClosing(false);
+    }, 280);
+  }, []);
+
+  const toggleMenu = useCallback(() => {
+    if (menuOpen) {
+      closeMenu();
+    } else {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setMenuOpen(true);
+      setMenuClosing(false);
+    }
+  }, [menuOpen, closeMenu]);
+
   const handleClick = useCallback((e, href) => {
     e.preventDefault();
     scrollTo(href.replace('#', ''));
-    setMenuOpen(false);
-  }, [scrollTo]);
+    closeMenu();
+  }, [scrollTo, closeMenu]);
 
   const links = useMemo(() => navLinksModel, []);
 
@@ -30,7 +65,7 @@ const NavbarComponent = () => {
           AK
         </a>
 
-        {/* Desktop link list */}
+        {/* Desktop links */}
         <ul className="nav-links">
           {links.map((link) => (
             <li key={link.href}>
@@ -45,33 +80,41 @@ const NavbarComponent = () => {
           ))}
         </ul>
 
-        {/* Controls: theme toggle + hamburger */}
+        {/* Controls */}
         <div className="nav-controls">
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
-            {isDark ? <IconSun /> : <IconMoon />}
+            {isDark ? (<IconMoon />) : (<IconSun />)}
           </button>
 
-          <button className="hamburger" onClick={() => setMenuOpen((o) => !o)} aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {menuOpen
-                ? <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12"/>
-                : <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16"/>
-              }
-            </svg>
+          {/* Hamburger */}
+          <button
+            className={`hamburger ${menuOpen && !menuClosing ? 'hamburger-open' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span className="ham-bar ham-bar-top" />
+            <span className="ham-bar ham-bar-mid" />
+            <span className="ham-bar ham-bar-bot" />
           </button>
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="mobile-menu">
-          {links.map((link) => (
-            <a key={link.href} href={link.href}
-               onClick={(e) => handleClick(e, link.href)}
-               className="mobile-link">
-              {link.label}
-            </a>
-          ))}
+        <div className={`mobile-menu${menuClosing ? ' mobile-menu-closing' : ''}`}>
+          <div className="mobile-menu-inner">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleClick(e, link.href)}
+                className="mobile-link"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       )}
     </nav>
