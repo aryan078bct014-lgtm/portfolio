@@ -26,7 +26,7 @@ const ContactComponent = () => {
     <section id="contact" ref={ref} className="contact">
       <div className="contact-inner">
 
-        <p className="section-eyebrow">04 — Contact</p>
+        <p className="section-eyebrow">05 — Contact</p>
         <h2 className="section-heading">Get In Touch</h2>
         <p className="contact-intro">
           Open to opportunities, collaborations, or a good technical conversation. Feel free to reach out.
